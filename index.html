@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SplitSense - Agentic Expense Settlement</title><link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script></head>
+<body><aside><h1 class="logo">SplitSense</h1>
+<nav><button data-v="new" class="on">+ New split</button><button data-v="hist">&#8634; History</button><button data-v="set">&#9881; Settings</button></nav>
+<p class="foot">Anyone with this link can use SplitSense. Your name, emails and history are saved only in this browser.</p></aside>
+<main>
+<header><div><h2>New split</h2><p class="mut">Describe your shared expenses in plain language - the agent does the rest.</p></div>
+<div class="row"><input id="uname" placeholder="Your name"><button id="saveName" class="gold">Save name</button></div></header>
+
+<section id="new" class="view"><div class="grid">
+<div><h3>Expense log</h3>
+<textarea id="log" rows="9">Priya paid 2400 for dinner, split equally among everyone
+Rohan paid 600 for the cab, split between Rohan and Aisha
+Kabir paid 1200 for groceries, split equally among everyone
+Aisha paid 900 for the boat tickets, split between Aisha, Priya, Kabir</textarea>
+<p class="mut small">One expense per line, in your own words. Say "everyone" for all members, or "between A and B" for some.</p>
+<button id="run" class="gold wide">Run agent settlement</button></div>
+<div><h3>Agent trace</h3><div id="trace" class="card mut">Waiting to start. The agent will find everyone mentioned, parse each expense, tally balances, then settle up.</div>
+<div id="out"></div></div></div></section>
+
+<section id="hist" class="view" hidden><h3>History</h3><div id="histList"></div></section>
+
+<section id="set" class="view" hidden><h3>Settings</h3><div class="card form">
+<label>Currency symbol<input id="cCur" maxlength="3"></label>
+<h4>Email notifications (EmailJS - free)</h4>
+<p class="mut small">Sign up at emailjs.com, add an email service, and create a template with <b>To Email = {{to_email}}</b>, Subject = <b>{{subject}}</b>, body = <b>{{message}}</b> (also usable: {{to_name}}). Paste the three IDs below.</p>
+<label>Public Key<input id="cKey"></label><label>Service ID<input id="cSvc"></label><label>Template ID<input id="cTpl"></label>
+<button id="saveCfg" class="gold">Save settings</button> <button id="clear" class="ghost">Clear all history</button></div></section>
+</main><div id="toast"></div><script src="app.js"></script></body></html>
